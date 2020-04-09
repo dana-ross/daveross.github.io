@@ -1,0 +1,33 @@
+{
+  "name": "davidmichaelross2018",
+  "version": "1.0.0",
+  "description": "David Michael Ross's Portfolio Site 2018",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git@git.cloud.davidmichaelross.net:daveross/davidmichaelross-com-2018.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "fontmin": "^0.9.6",
+    "imagemin-cli": "^3.0.0",
+    "svgo": "^1.0.5",
+    "uglify-js": "^3.3.16",
+    "uglifycss": "0.0.29"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run-script build-css && npm run-script build-fonts && npm run-script build-card-icons && npm run-script build-social-icons && npm run-script build-logo && npm run-script build-video-previews",
+    "build-css": "node_modules/.bin/uglifycss assets/src/style.css --output assets/dist/style.css",
+    "build-js": "node_modules/.bin/uglifyjs assets/src/script.js --output assets/dist/script.js",
+    "build-fonts": "node_modules/.bin/fontmin -b assets/src/fonts/* assets/dist/fonts/",
+    "build-card-icons": "node_modules/.bin/svgo --disable=cleanupNumericValues -f assets/src/card-icons -o assets/dist/card-icons",
+    "build-social-icons": "node_modules/.bin/svgo --disable=cleanupNumericValues -f assets/src/social-icons -o assets/dist/social-icons",
+    "build-logo": "node_modules/.bin/svgo  -i assets/src/logos/dave-ross.svg -o assets/dist/logos",
+    "build-share-logo": "node_modules/.bin/imagemin assets/src/logos/dave-ross-social-image.png --out-dir=assets/dist/logos",
+    "build-video-previews": "node_modules/.bin/imagemin assets/src/video-previews/* --out-dir=assets/dist/video-previews",
+    "deploy": "export BUILD_TEMP=$(mktemp -d) && export BUILD_REPO=`grep  -hoP '\"url\": \"\\K(git@[^\"]+)' package.json` && cd $BUILD_TEMP && echo \"Build dir is $BUILD_TEMP\" && echo \"Build repo is $BUILD_REPO\" && git clone $BUILD_REPO $BUILD_TEMP"
+  },
+  "author": "Dave Ross <dave@davidmichaelross.com>",
+  "license": "MIT"
+}
