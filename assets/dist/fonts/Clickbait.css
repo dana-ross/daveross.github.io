@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Clickbait";
+    src: url("Clickbait.eot"); /* IE9 */
+    src: url("Clickbait.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("Clickbait.woff") format("woff"), /* chrome, firefox */
+    url("Clickbait.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("Clickbait.svg#Clickbait") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
